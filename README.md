@@ -1,9 +1,9 @@
-#Performance evaluation for Python functions
+# Performance evaluation for Python functions
 
 This package is supposed to provide decorator function which you can use
 to easily measure the performance of Python functions.
 
-##Installation
+## Installation
 ```
 pip install git+https://github.com/lukazso/evaltools
 ```
@@ -14,12 +14,12 @@ cd evaltools
 pip install -e .
 ```
 
-##Features
+## Features
 Version 0.0:
 - Runtime measurement
 - FLOP measurement (if supported by kernel)
 
-##Usage
+## Usage
 You can find some examples on how to use this library in *examples.py*. 
 
 Minimal working example:
@@ -48,6 +48,6 @@ loop	RUNTIME: 0.04 ms
 {'loop': 0.03600120544433594}
 ```
 
-##Contribution
+## Contribution
 Feel free to contribute any performance evaluation features you find useful. Simply develop on a 
 new feature branch and merge it into the master via a PR.
