@@ -4,7 +4,15 @@ This package is supposed to provide decorator function which you can use
 to easily measure the performance of Python functions.
 
 ##Installation
-`pip install git+...`
+```
+pip install git+https://github.com/lukazso/evaltools
+```
+or
+```
+git clone https://github.com/lukazso/evaltools
+cd evaltools
+pip install -e .
+```
 
 ##Features
 Version 0.0:
