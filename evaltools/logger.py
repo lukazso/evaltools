@@ -6,7 +6,7 @@ class PerformanceLogger(object):
         self.df = pd.DataFrame(columns=parameters)
 
     def add(self, **kwargs):
-        self.df = self.df.append(kwargs)
+        self.df = self.df.append(kwargs, ignore_index=True)
 
     def save(self, path):
         self.df.to_csv(path)
