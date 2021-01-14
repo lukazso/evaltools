@@ -2,9 +2,9 @@ from evaltools.utils import runtime, flops
 
 
 def loop(n):
-    a = 0
+    a = 0.0
     for i in range(n):
-        a += 1
+        a += 1.0
 
 
 @runtime(show=True)
@@ -27,7 +27,7 @@ def test3(n):
     loop(n)
 
 
-# @flops(False)
+@flops(False)
 def test4(n):
     loop(n)
 
