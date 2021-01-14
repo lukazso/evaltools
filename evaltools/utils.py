@@ -19,8 +19,8 @@ def papi_event_exists(event):
 
 def runtime(show=True):
     """
-    Decorator function which measures the runtime of the decorated function and prints it to
-    stdout.
+    Decorator function which measures the runtime of the decorated function (in milliseconds) and
+    prints it to stdout.
     If the decorated function contains a dictionary passed via the keyword parameter "log_time",
     then the result is saved in there.
     :param show: (bool) True if the runtime is supposed to be printed to stdout.
