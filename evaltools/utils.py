@@ -69,3 +69,43 @@ def flops(show=True):
                 return func(*args, **kkwargs)
         return floped
     return eval_flops
+
+
+def spops(show=True):
+    """
+    Decorator function which measures the single precision operations used by the decorated
+    function and prints it to stdout. The function relies on the availability of the PAPI_SP_OPS
+    event. If the kernel does not support this event, a warning is printed and the function is
+    simply executed.
+    If the decorated function contains a dictionary passed via the keyword parameter "log_spops",
+    then the result is saved in there.
+    :param show: (bool) True if the number of single precision operations are supposed to be
+        printed to stdout.
+    :return: Decorated function.
+    """
+    def eval_spops(func):
+        def spoped(*args, **kwargs):
+            kkwargs = kwargs.copy()
+            # check if the log_spops keyword is provided
+            try:
+                kkwargs.pop("log_spops")
+            except:
+                pass
+
+            # if the event is available, do spop calculation & execute func
+            try:
+                high.start_counters([events.PAPI_SP_OPS])
+                result = func(*args, **kkwargs)
+                spops = high.stop_counters()[0]
+                if "log_spops" in kwargs:
+                    kwargs["log_spops"][func.__name__] = spops
+                if show:
+                    print("{}\tSPOPS:\t\t{}".format(func.__name__, spops))
+                return result
+            except pypapi.exceptions.PapiNoEventError as e:
+                warnings.warn("{} \nYour kernel might not "
+                              "support this function. Function {} is executed without SPOP "
+                              "counting.".format(e, func.__name__))
+                return func(*args, **kkwargs)
+        return spoped
+    return eval_spops
