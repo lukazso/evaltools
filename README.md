@@ -5,13 +5,7 @@ to easily measure the performance of Python functions.
 
 ## Installation
 ```
-pip install git+https://github.com/lukazso/evaltools
-```
-or
-```
-git clone https://github.com/lukazso/evaltools
-cd evaltools
-pip install -e .
+pip install evaltools
 ```
 
 ## Features
